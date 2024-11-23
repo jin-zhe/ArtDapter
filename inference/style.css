@@ -1,0 +1,45 @@
+/* Hides the style container and removes the extra spacing */
+.element-container:has(.hide-element) {
+    display: none;
+}
+
+/*
+    The selector for >.element-container is necessary to avoid selecting the whole
+    body of the streamlit app, which is also a stVerticalBlock.
+*/
+div[data-testid="stVerticalBlock"]:has(> .element-container .horizontal-marker) {
+    display: flex;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: baseline;
+}
+
+/* Buttons and their parent container all have a width of 704px, which we need to override */
+div[data-testid="stVerticalBlock"]:has(> .element-container .horizontal-marker) div {
+    width: max-content !important;
+}
+
+/* Just an example of how you would style buttons, if desired */
+/*
+div[data-testid="stVerticalBlock"]:has(> .element-container .horizontal-marker) button {
+    border-color: red;
+}
+*/
+
+button[kind="primary"] {
+  width: 128px;
+  position: fixed;
+  bottom: 30px;
+  right: calc(50% - 64px);
+  height: 55px;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+textarea[aria-label="Balance"], textarea[aria-label="Harmony"], textarea[aria-label="Variety"],
+textarea[aria-label="Unity"], textarea[aria-label="Contrast"], textarea[aria-label="Emphasis"],
+textarea[aria-label="Proportion"], textarea[aria-label="Movement"], textarea[aria-label="Rhythm"],
+textarea[aria-label="Pattern"]{
+  height: 128px;
+}
